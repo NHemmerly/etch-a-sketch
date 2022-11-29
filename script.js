@@ -7,7 +7,6 @@ function createGrid (rows, columns) {
     grid.style.setProperty('--grid-columns', columns);
     for (let c = 0; c < (rows * columns); c++) {
         let cell = document.createElement("div");
-        cell.innerText = (c + 1);
         grid.appendChild(cell).className = "grid-item";
     };
 };
