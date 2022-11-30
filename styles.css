@@ -1,6 +1,17 @@
+/* Styling */
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #B37C57;
+} 
+/* Code for the grid */
 :root {
     --grid-rows: 1;
     --grid-columns: 1;
+}
+
+.container {
+    width: 100%;
+    aspect-ratio: 100 / 29;
 }
 
 .grid {
@@ -14,8 +25,8 @@
 
 .grid-item {
     padding: 10px 10px;
-    border: 1px solid #000;
     text-align: center;
+    background-color: #FEF7F8;
 
 }
 
