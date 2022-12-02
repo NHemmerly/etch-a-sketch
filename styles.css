@@ -2,6 +2,7 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     background-color: #B37C57;
+    color:#FEF7F8
 } 
 /* Code for the grid */
 :root {
@@ -10,8 +11,12 @@ body {
 }
 
 .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     aspect-ratio: 100 / 29;
+    margin-top: 2em;
 }
 
 .grid {
@@ -21,6 +26,7 @@ body {
     grid-template-columns: repeat(var(--grid-columns), 1fr);
     height: 480px;
     width: 480px;
+    margin-top: 2em;
 }
 
 .grid-item {
