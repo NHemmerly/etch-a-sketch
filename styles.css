@@ -1,5 +1,7 @@
 /* Styling */
 body {
+    display: flex;
+    justify-content: center;
     font-family: Arial, Helvetica, sans-serif;
     background-color: #B37C57;
     color:#FEF7F8
@@ -14,7 +16,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 70%;
     aspect-ratio: 100 / 29;
     margin-top: 2em;
 }
@@ -36,4 +38,30 @@ body {
 
 }
 
+/*CSS for the settings buttons*/
+.settings {
+    display: flex;
+    width: 480px;
+    flex: 1;
+    flex-wrap: wrap;
+    margin-top: 2em;
+    justify-content: center;
+    
+}
+
+.settings button {
+    padding: 10px;
+    padding-left: 1.7em;
+    padding-right: 1.7em;
+    background-color: antiquewhite;
+    border: none;
+    border-left: 2px solid darkgrey;
+    border-right: 2px solid darkgrey;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+button:hover {
+    background-color: orange;
+}
 
