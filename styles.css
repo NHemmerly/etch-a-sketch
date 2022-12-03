@@ -71,7 +71,7 @@ body {
     justify-content: center;
     flex-direction: column;
     padding: 2em;
-    width: 200px;
+    width: 180px;
 }
 
 .slide-container {
@@ -80,7 +80,7 @@ body {
     align-items: center;
     justify-content: space-around;
     padding: 2em;
-    width: 200px;
+    width: 180px;
 }
 
 .slider {

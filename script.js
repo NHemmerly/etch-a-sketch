@@ -5,6 +5,7 @@ const DEF_BACKGROUND_COLOR = "#FEF7F8";
 
 let background = DEF_BACKGROUND_COLOR;
 let currentColor = DEF_COLOR;
+let rainbow = false;
 
 //Display the value of canvas size slider
 var canvasSize = document.querySelectorAll('#value');
@@ -47,13 +48,18 @@ function addPixel(e) {
         return;
     }
     else if ((e.type == 'mouseover' && mousedown) || e.type == 'click') {
-        if (pen == true) {
-            e.target.style.setProperty('background-color', currentColor);
-        } else if (eraser == true) {
-            e.target.style.setProperty('background-color', background);
+            if (pen == true) {
+                if (rainbow == true) {
+                    makeRainbow();
+                    e.target.style.setProperty('background-color', currentColor);
+                } else {
+                    e.target.style.setProperty('background-color', currentColor);
+                }
+            } else if (eraser == true) {
+                e.target.style.setProperty('background-color', background);
+            }
         }
     }
-}
 
 function setColor(newColor) {
     currentColor = newColor;
@@ -70,6 +76,13 @@ function setBackgroundColor(newColor) {
     pixels.forEach(pix => pix.style.setProperty('background-color', background));
 }
 
+function makeRainbow() {
+    const rainR = Math.floor(Math.random() * 256);
+    const rainG = Math.floor(Math.random() * 256);
+    const rainB = Math.floor(Math.random() * 256);
+    currentColor = `rgb(${rainR}, ${rainG}, ${rainB})`;
+    return currentColor;
+}
 //Toggle erase button
 let erase = document.getElementById("erase");
 erase.addEventListener("click", () => {
@@ -89,11 +102,26 @@ draw.addEventListener("click", () => {
     eraser = false;
 });
 
+//Toggle rainbow button
+let rainbowButton = document.getElementById("rainbow");
+rainbowButton.addEventListener("click", () => {
+    if (rainbow == true) {
+        rainbow = false;
+        currentColor = DEF_COLOR;
+        rainbowButton.style.setProperty('background-color', 'antiquewhite');
+    } else {
+        rainbow = true;
+        rainbowButton.style.setProperty('background-color', 'orange');
+    }
+});
+
 //Color Selector, background color selector
 const selectColor = document.getElementById("color");
+selectColor.value = "#000000";
 selectColor.oninput = (e) => setColor(e.target.value);
 
 const backgroundSelect = document.getElementById("background");
+backgroundSelect.value = DEF_BACKGROUND_COLOR;
 backgroundSelect.oninput = (e) => setBackgroundColor(e.target.value);
 
 
