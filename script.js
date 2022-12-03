@@ -13,6 +13,7 @@ canvasSize.forEach(canvas => canvas.textContent = slider.value);
 
 slider.oninput = () => {
     canvasSize.forEach(canvas => canvas.textContent = slider.value);
+    createGrid(slider.value, slider.value);
 }
 
 //initialize pen and eraser tools
@@ -26,6 +27,7 @@ document.body.onmouseup = () => (mousedown = false);
 
 //Function to create a grid. Will later create dynamically sized grids
 function createGrid (rows, columns) {
+    resetGrid();
     grid.style.setProperty('--grid-rows', rows);
     grid.style.setProperty('--grid-columns', columns);
     for (let c = 0; c < (rows * columns); c++) {
@@ -36,6 +38,7 @@ function createGrid (rows, columns) {
         cell.addEventListener('mousedown', addPixel);
         grid.appendChild(cell).className = "grid-item";
     };
+    setBackgroundColor(background);
 };
 
 //When Mousebutton is down and hovering over the canvas, add a pixel of desired color
@@ -54,6 +57,11 @@ function addPixel(e) {
 
 function setColor(newColor) {
     currentColor = newColor;
+}
+
+function resetGrid() {
+    let pixels = document.querySelectorAll(".grid-item");
+    pixels.forEach(pix => pix.remove());
 }
 
 function setBackgroundColor(newColor) {

@@ -31,10 +31,6 @@ body {
     margin-top: 2em;
 }
 
-.grid-item {
-    text-align: center;
-}
-
 /*CSS for the settings buttons*/
 .settings {
     display: flex;
