@@ -60,6 +60,13 @@ body {
     font-weight: 700;
 }
 
+.settings input {
+    width: 6em;
+    height: 36px;
+    border: none;
+    padding: 0;
+}
+
 button:hover {
     background-color: orange;
 }

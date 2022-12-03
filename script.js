@@ -1,8 +1,11 @@
 //Set global variables
 const grid = document.querySelector(".grid");
+const DEF_COLOR = "#000";
 let background = "#FEF7F8";
 let pen = true;
 let eraser = false;
+
+let currentColor = DEF_COLOR;
 
 let mousedown = false;
 document.body.onmousedown = () => (mousedown = true);
@@ -27,12 +30,15 @@ function addPixel(e) {
     }
     else if (e.type == 'mouseover' && mousedown) {
         if (pen == true) {
-            e.target.style.setProperty('background-color', 'black');
+            e.target.style.setProperty('background-color', currentColor);
         } else if (eraser == true) {
             e.target.style.setProperty('background-color', background);
         }
-        
     }
+}
+
+function setColor(newColor) {
+    currentColor = newColor;
 }
 
 //Toggle erase button
@@ -42,11 +48,17 @@ erase.addEventListener("click", () => {
     pen = false;
 });
 
+//Toggle pen button
 let draw = document.getElementById("pen");
 draw.addEventListener("click", () => {
     pen = true;
     eraser = false;
-})
+});
+
+//Color Selector
+const selectColor = document.getElementById("color");
+selectColor.oninput = (e) => setColor(e.target.value);
+
 
 //Button to clear the canvas
 let clear = document.getElementById("clear");
