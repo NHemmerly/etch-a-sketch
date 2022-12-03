@@ -73,13 +73,18 @@ function setBackgroundColor(newColor) {
 //Toggle erase button
 let erase = document.getElementById("erase");
 erase.addEventListener("click", () => {
+    erase.style.setProperty("background-color", "orange");
+    draw.style.setProperty("background-color", "antiquewhite");
     eraser = true;
     pen = false;
 });
 
 //Toggle pen button
 let draw = document.getElementById("pen");
+draw.style.setProperty("background-color", "orange");
 draw.addEventListener("click", () => {
+    draw.style.setProperty("background-color", "orange");
+    erase.style.setProperty("background-color", "antiquewhite");
     pen = true;
     eraser = false;
 });
