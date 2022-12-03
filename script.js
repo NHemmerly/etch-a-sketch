@@ -3,11 +3,22 @@ const grid = document.querySelector(".grid");
 const DEF_COLOR = "#000";
 const DEF_BACKGROUND_COLOR = "#FEF7F8";
 
-let background = "#FEF7F8";
+let background = DEF_BACKGROUND_COLOR;
+let currentColor = DEF_COLOR;
+
+//Display the value of canvas size slider
+var canvasSize = document.querySelectorAll('#value');
+var slider = document.querySelector('.slider');
+canvasSize.forEach(canvas => canvas.textContent = slider.value);
+
+slider.oninput = () => {
+    canvasSize.forEach(canvas => canvas.textContent = slider.value);
+}
+
+//initialize pen and eraser tools
+
 let pen = true;
 let eraser = false;
-
-let currentColor = DEF_COLOR;
 
 let mousedown = false;
 document.body.onmousedown = () => (mousedown = true);
