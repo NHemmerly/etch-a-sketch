@@ -1,6 +1,8 @@
-//Create a variable 'grid' to store the container that will hold grid elements
+//Set global variables
 const grid = document.querySelector(".grid");
 let background = "#FEF7F8";
+let pen = true;
+let eraser = false;
 
 let mousedown = false;
 document.body.onmousedown = () => (mousedown = true);
@@ -24,9 +26,27 @@ function addPixel(e) {
         return;
     }
     else if (e.type == 'mouseover' && mousedown) {
-        e.target.style.setProperty('background-color', 'black');
+        if (pen == true) {
+            e.target.style.setProperty('background-color', 'black');
+        } else if (eraser == true) {
+            e.target.style.setProperty('background-color', background);
+        }
+        
     }
 }
+
+//Toggle erase button
+let erase = document.getElementById("erase");
+erase.addEventListener("click", () => {
+    eraser = true;
+    pen = false;
+});
+
+let draw = document.getElementById("pen");
+draw.addEventListener("click", () => {
+    pen = true;
+    eraser = false;
+})
 
 //Button to clear the canvas
 let clear = document.getElementById("clear");
