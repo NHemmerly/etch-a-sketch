@@ -1,6 +1,8 @@
 //Set global variables
 const grid = document.querySelector(".grid");
 const DEF_COLOR = "#000";
+const DEF_BACKGROUND_COLOR = "#FEF7F8";
+
 let background = "#FEF7F8";
 let pen = true;
 let eraser = false;
@@ -17,6 +19,8 @@ function createGrid (rows, columns) {
     grid.style.setProperty('--grid-columns', columns);
     for (let c = 0; c < (rows * columns); c++) {
         let cell = document.createElement("div");
+        cell.style.setProperty('background-color', background);
+        cell.addEventListener('click', addPixel);
         cell.addEventListener('mouseover', addPixel);
         cell.addEventListener('mousedown', addPixel);
         grid.appendChild(cell).className = "grid-item";
@@ -28,7 +32,7 @@ function addPixel(e) {
     if (e.type == 'mouseover' && !mousedown) {
         return;
     }
-    else if (e.type == 'mouseover' && mousedown) {
+    else if ((e.type == 'mouseover' && mousedown) || e.type == 'click') {
         if (pen == true) {
             e.target.style.setProperty('background-color', currentColor);
         } else if (eraser == true) {
@@ -39,6 +43,12 @@ function addPixel(e) {
 
 function setColor(newColor) {
     currentColor = newColor;
+}
+
+function setBackgroundColor(newColor) {
+    background = newColor;
+    let pixels = document.querySelectorAll(".grid-item");
+    pixels.forEach(pix => pix.style.setProperty('background-color', background));
 }
 
 //Toggle erase button
@@ -55,9 +65,12 @@ draw.addEventListener("click", () => {
     eraser = false;
 });
 
-//Color Selector
+//Color Selector, background color selector
 const selectColor = document.getElementById("color");
 selectColor.oninput = (e) => setColor(e.target.value);
+
+const backgroundSelect = document.getElementById("background");
+backgroundSelect.oninput = (e) => setBackgroundColor(e.target.value);
 
 
 //Button to clear the canvas

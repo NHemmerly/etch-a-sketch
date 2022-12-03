@@ -17,11 +17,23 @@
         <div class="settings">
             <!--Color button will eventually
             be a menu-->
-            <button>Canvas Size</button>
-            <input id="color" type="color" default="#000">
-            <button id="pen">Pen</button>
-            <button id="erase">Erase</button>
-            <button id="clear">Clear</button>
+            <div class="colors">
+                <div>
+                    <p>Color:</p>
+                    <input id="color" type="color" default="#000">
+                </div>
+                <div>
+                    <p>Background:</p>
+                    <input id="background" type="color" default="#FEF7F8">
+                </div>
+            </div>
+            <div class="other-settings">
+                <button>Canvas Size</button>
+                <button id="pen">Pen</button>
+                <button id="erase">Erase</button>
+                <button id="clear">Clear</button>
+            </div>
+            
         </div>
     </div>
 </body>

@@ -33,8 +33,6 @@ body {
 
 .grid-item {
     text-align: center;
-    background-color: #FEF7F8;
-
 }
 
 /*CSS for the settings buttons*/
@@ -48,16 +46,23 @@ body {
     
 }
 
-.settings button {
+.settings button,
+.colors {
     padding: 10px;
     padding-left: 1.7em;
     padding-right: 1.7em;
     background-color: antiquewhite;
-    border: none;
-    border-left: 2px solid darkgrey;
-    border-right: 2px solid darkgrey;
+    color: black;
+    border: 2px solid darkgrey;
     font-size: 14px;
     font-weight: 700;
+}
+
+.settings div {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .settings input {
@@ -67,7 +72,31 @@ body {
     padding: 0;
 }
 
+.colors {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 2em;
+    width: 200px;
+}
+
+.colors div {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.other-settings {
+    display: flex;
+}
+
 button:hover {
     background-color: orange;
+}
+
+p {
+    padding: 0;
+    margin: 0;
 }
 
