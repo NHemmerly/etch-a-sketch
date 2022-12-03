@@ -1,5 +1,6 @@
 //Create a variable 'grid' to store the container that will hold grid elements
 const grid = document.querySelector(".grid");
+let background = "#FEF7F8";
 
 let mousedown = false;
 document.body.onmousedown = () => (mousedown = true);
@@ -26,6 +27,13 @@ function addPixel(e) {
         e.target.style.setProperty('background-color', 'black');
     }
 }
+
+//Button to clear the canvas
+let clear = document.getElementById("clear");
+clear.addEventListener("click", () => {
+    let pixels = document.querySelectorAll(".grid-item");
+    pixels.forEach(pix => pix.style.setProperty('background-color', background));
+});
 
 //User can select a different color, variables are returned to decide the color
 
