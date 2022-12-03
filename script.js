@@ -6,6 +6,10 @@ const DEF_BACKGROUND_COLOR = "#FEF7F8";
 let background = DEF_BACKGROUND_COLOR;
 let currentColor = DEF_COLOR;
 let rainbow = false;
+let shader = false;
+let shadeR = 0;
+let shadeG = 0;
+let shadeB = 0;
 
 //Display the value of canvas size slider
 var canvasSize = document.querySelectorAll('#value');
@@ -52,6 +56,9 @@ function addPixel(e) {
                 if (rainbow == true) {
                     makeRainbow();
                     e.target.style.setProperty('background-color', currentColor);
+                } else if (shader == true) {
+                    convertToRGB(e.target.style.backgroundColor);
+                    e.target.style.setProperty('background-color', currentColor);
                 } else {
                     e.target.style.setProperty('background-color', currentColor);
                 }
@@ -83,6 +90,20 @@ function makeRainbow() {
     currentColor = `rgb(${rainR}, ${rainG}, ${rainB})`;
     return currentColor;
 }
+
+//Functions for shader
+function makeShader() {
+    currentColor = `rgb(${256 * .9}, ${256 * .9}, ${256 * .9})`
+}
+
+function convertToRGB(color) {
+    var hexToRGB = color.match(/\d+/g);
+    
+    shadeR = hexToRGB[0] - 26;
+    shadeG = hexToRGB[1] - 26;
+    shadeB = hexToRGB[2] - 26;
+    currentColor = `rgb(${shadeR}, ${shadeG}, ${shadeB})`;
+}
 //Toggle erase button
 let erase = document.getElementById("erase");
 erase.addEventListener("click", () => {
@@ -111,9 +132,26 @@ rainbowButton.addEventListener("click", () => {
         rainbowButton.style.setProperty('background-color', 'antiquewhite');
     } else {
         rainbow = true;
+        shader = false;
         rainbowButton.style.setProperty('background-color', 'orange');
+        shaderButton.style.setProperty('background-color', 'antiquewhite');
     }
 });
+
+//Toggle shader button
+let shaderButton = document.getElementById('shader');
+shaderButton.addEventListener("click", () => {
+    if (shader == true) {
+        shader = false;
+        currentColor = DEF_COLOR;
+        shaderButton.style.setProperty('background-color', 'antiquewhite');
+    } else {
+        shader = true;
+        rainbow = false;
+        shaderButton.style.setProperty('background-color', 'orange');
+        rainbowButton.style.setProperty('background-color', 'antiquewhite');
+    }
+})
 
 //Color Selector, background color selector
 const selectColor = document.getElementById("color");
